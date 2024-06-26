@@ -12,8 +12,7 @@ function emptyText(id){
 
 // display none
 function displayNone(id){
-    // document.getElementById(id).style.display = "none";
-    console.log(document.getElementById(id));
+    document.getElementById(id).style.display = "none";
 
 }
 
@@ -28,7 +27,7 @@ function generateRandomNumber(){
     document.getElementById("generated-display").value = generateNumber;
 
     emptyValue("submit-display");
-    displayNone("Match");
+    displayNone("match");
     displayNone("not-match");
 }
 
@@ -58,10 +57,26 @@ function submitBtn(){
     let typeNum = document.getElementById("submit-display").value;
 
    if(generatedNum == typeNum){
-        displayBlock("Match");
+        displayBlock("match");
         displayNone("not-match");
    }else{
     displayBlock("not-match");
     displayNone("match");
+    tryLeft("try-value");
+    displayBlock("try-content");
    }
 }
+
+// Try 3 time left 
+function tryLeft(id){
+    let tryValue = document.getElementById(id).innerHTML;
+    if (tryValue > 0){
+        document.getElementById(id).innerHTML -= 1;
+    }
+
+    if(tryLeft == '0'){
+        disableBtn("submit");
+    }
+}
+
+// try left 0 condition 
